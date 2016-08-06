@@ -78,7 +78,7 @@ public class DBAdapter extends SQLiteOpenHelper {
             myInput.close();
 
 		/*	
-			
+
 			
 			
 			InputStream is = v.getAssets().open("quiz.sqlite");
@@ -107,6 +107,11 @@ public class DBAdapter extends SQLiteOpenHelper {
     }
 
     public int insertDB(String name, String email, float amt, String phone, String password) {
+
+        Cursor c = sdb.rawQuery("SELECT * from users where username='" + name + "' and phno='" + phone + "'", null);
+        if (c.getCount() > 0)
+            return -1;
+
         ContentValues cv = new ContentValues();
         cv.put("username", name);
         cv.put("email", email);
@@ -116,13 +121,10 @@ public class DBAdapter extends SQLiteOpenHelper {
 
         sdb.insert("users", null, cv);
 
-        Cursor c1 = sdb.rawQuery("SELECT * from users where username='" + name + "' and password='" + password + "'", null);
+        Cursor c1 = sdb.rawQuery("SELECT * from users where username='" + name + "' and password='" + password + "' and phno='" + phone + "'", null);
         if (c1.moveToNext()) {
             c1.moveToFirst();
-            if (c1.getInt(0) > 0)
-                return c1.getInt(0);
-            else
-                return 0;
+            return c1.getInt(0);
         } else
             return 0;
     }
@@ -148,8 +150,7 @@ public class DBAdapter extends SQLiteOpenHelper {
     public Users getRegisterData(String name, String password) {
 
         Cursor c1 = sdb.rawQuery("SELECT * from users where username='" + name + "' and password='" + password + "'", null);
-        if (c1.moveToNext())
-        {
+        if (c1.moveToNext()) {
             c1.moveToFirst();
             Users q1 = new Users();
             q1.setId(c1.getInt(0));
