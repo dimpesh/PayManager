@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Money Manager</string>
+    <string name="app_main_head">Pay Manager</string>
+    <string name="signin">Sign-In</string>
+    <string name="username_str">Username</string>
+    <string name="password_str">Password</string>
+    <string name="signin_button">SIGN IN</string>
+    <string name="register_str">No account yet? Create one</string>
+    <string name="forgot_str">Forgot password? Click here</string>
+    <string name="register_name">Username</string>
+    <string name="register_password">Password</string>
+    <string name="register_email">Email</string>
+    <string name="register_amt">Initial amount</string>
+    <string name="register_btn">CREATE ACCOUNT</string>
+    <string name="already_str">Already a member? Sign in</string>
+    <string name="forgot_name">Username</string>
+    <string name="forgot_email">Email</string>
+    <string name="forgot_btn_str">SEND PASSWORD</string>
+    <string name="register_phone">Phone</string>
+    <string name="welcome_signin">Welcome</string>
+    <string name="error_signin">Invalid Credentials</string>
+</resources>
