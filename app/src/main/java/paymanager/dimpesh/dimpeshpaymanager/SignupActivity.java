@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,26 +40,21 @@ public class SignupActivity extends AppCompatActivity {
         db.openDatabase();
     }
 
-    public void checkRegister(View v) {
-        if (username.getText().toString().equals("null"))
-            Toast.makeText(getApplicationContext(), "Improper Details...\nTryAgain", Toast.LENGTH_SHORT).show();
-        else if (email.getText().toString().equals("null"))
-            Toast.makeText(getApplicationContext(), "Improper Details...\nTryAgain", Toast.LENGTH_SHORT).show();
-        else if (password.getText().toString().equals("null"))
-            Toast.makeText(getApplicationContext(), "Improper Details...\nTryAgain", Toast.LENGTH_SHORT).show();
-        else if (phone.getText().toString().equals("null"))
-            Toast.makeText(getApplicationContext(), "Improper Details...\nTryAgain", Toast.LENGTH_SHORT).show();
-        else if (amt.getText().toString().equals("null"))
-            Toast.makeText(getApplicationContext(), "Improper Details...\nTryAgain", Toast.LENGTH_SHORT).show();
 
+    public void register(View v) {
+        Log.v("My String : register ", "register is called");
+        if (username.getText().toString().isEmpty())
+            Toast.makeText(getApplicationContext(), "Username cannot be empty...", Toast.LENGTH_SHORT).show();
+        else if (email.getText().toString().isEmpty())
+            Toast.makeText(getApplicationContext(), "Email cannot be empty...", Toast.LENGTH_SHORT).show();
+        else if (password.getText().toString().isEmpty())
+            Toast.makeText(getApplicationContext(), "Password cannot be empty...", Toast.LENGTH_SHORT).show();
+        else if (phone.getText().toString().isEmpty())
+            Toast.makeText(getApplicationContext(), "Phone No. cannot be empty...", Toast.LENGTH_SHORT).show();
         else {
-            int n = db.insertDB(username.getText().toString(), email.getText().toString(),
-                    Float.parseFloat(amt.getText().toString()), phone.getText().toString(), password.getTransitionName().toString());
-            if (n > 0)
-                Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
-            else {
-                Toast.makeText(getApplicationContext(), "Error in Signing Up \n Try Later...", Toast.LENGTH_SHORT).show();
-            }
+
+            // TODO Initially checking the cases only rewrite the Database part...
+            Toast.makeText(getApplicationContext(),"All fields filled...",Toast.LENGTH_SHORT).show();
         }
     }
 

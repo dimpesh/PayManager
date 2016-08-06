@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(getApplicationContext(),getString(R.string.error_signin)+"\n\tTry Again",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.error_signin)+"Try Again",Toast.LENGTH_SHORT).show();
 
         }
 
