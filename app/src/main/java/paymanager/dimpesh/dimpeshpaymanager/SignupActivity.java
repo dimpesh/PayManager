@@ -53,8 +53,24 @@ public class SignupActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Phone No. cannot be empty...", Toast.LENGTH_SHORT).show();
         else {
 
-            // TODO Initially checking the cases only rewrite the Database part...
-            Toast.makeText(getApplicationContext(),"All fields filled...",Toast.LENGTH_SHORT).show();
+            String sname = username.getText().toString();
+            String semail = email.getText().toString();
+            String spassword = password.getText().toString();
+            String sphone = phone.getText().toString();
+            Float samt = Float.parseFloat(amt.getText().toString());
+
+
+            int n = db.insertDB(sname, semail, samt, sphone, spassword);
+            if (n < 0) {
+                Toast.makeText(getApplicationContext(), "Data Mismatch error...", Toast.LENGTH_SHORT).show();
+
+            } else if (n == 0) {
+                Toast.makeText(getApplicationContext(), "Failed to register...", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Success...\nYour registration ID : "+n, Toast.LENGTH_LONG).show();
+
+            }
+
         }
     }
 
